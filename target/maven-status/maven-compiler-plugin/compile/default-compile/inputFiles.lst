@@ -1,0 +1,9 @@
+/home/spark/Documentos/repositorios/spring-data-advanced/src/main/java/com/github/fabriciolfj/dataadvanced/domain/repository/specs/AuthorSpecs.java
+/home/spark/Documentos/repositorios/spring-data-advanced/src/main/java/com/github/fabriciolfj/dataadvanced/domain/service/AuthorService.java
+/home/spark/Documentos/repositorios/spring-data-advanced/src/main/java/com/github/fabriciolfj/dataadvanced/domain/repository/AuthorRepository.java
+/home/spark/Documentos/repositorios/spring-data-advanced/src/main/java/com/github/fabriciolfj/dataadvanced/api/AuthorController.java
+/home/spark/Documentos/repositorios/spring-data-advanced/src/main/java/com/github/fabriciolfj/dataadvanced/domain/repository/BookRepository.java
+/home/spark/Documentos/repositorios/spring-data-advanced/src/main/java/com/github/fabriciolfj/dataadvanced/DataAdvancedApplication.java
+/home/spark/Documentos/repositorios/spring-data-advanced/src/main/java/com/github/fabriciolfj/dataadvanced/domain/entity/Book.java
+/home/spark/Documentos/repositorios/spring-data-advanced/src/main/java/com/github/fabriciolfj/dataadvanced/domain/entity/Publisher.java
+/home/spark/Documentos/repositorios/spring-data-advanced/src/main/java/com/github/fabriciolfj/dataadvanced/domain/entity/Author.java

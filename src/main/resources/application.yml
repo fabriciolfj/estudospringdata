@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: springdata
+  datasource:
+    url: jdbc:mysql://localhost:3306/spring?cachePrepStms=true&useServerPrepStmts=true&rewriteBatchedStatements=true
+    username: root
+    password: root
+    hikari:
+      auto-commit: false
+      minimum-idle: 10
+      maximum-pool-size: 10
+  jpa:
+    properties:
+      hibernate:
+        cache.use_second_leval_cache: true
+        jdbc:
+          batch_size: 30
+        dialect: org.hibernate.dialect.MySQL57Dialect
+    hibernate:
+      ddl-auto: 'update'
+    generate-ddl: true
+    show-sql: true
+
+jdbc:
+  batch:
+    size: 30
+logging:
+  level:
+    root: INFO
+    org.springframework.orm.jpa: DEBUG
+    org.springframework.orm.transaction: DEBUG
+    org.hibernate.engine.transaction.internal.TransactionImpl: DEBUG
