@@ -3,8 +3,10 @@ package com.github.fabriciolfj.dataadvanced.domain.service;
 import com.github.fabriciolfj.dataadvanced.domain.entity.Author;
 import com.github.fabriciolfj.dataadvanced.domain.entity.AuthorId;
 import com.github.fabriciolfj.dataadvanced.domain.entity.Book;
+import com.github.fabriciolfj.dataadvanced.domain.entity.Publisher;
 import com.github.fabriciolfj.dataadvanced.domain.repository.AuthorRepository;
 import com.github.fabriciolfj.dataadvanced.domain.repository.BookRepository;
+import com.github.fabriciolfj.dataadvanced.domain.repository.PublisherRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,9 +21,16 @@ import java.math.BigDecimal;
 public class BookstoreService {
 
     private final HelperService helperService;
+    private final PublisherRepository publisherRepository;
+    private Publisher publisher;
 
     public void mainAuthor(){
-        AuthorId authorId = new AuthorId("teste5", 25);
+        Publisher publisherOld = new Publisher();
+        publisherOld.setCompany("Teste");
+
+        this.publisher = publisherRepository.save(publisherOld);
+
+        AuthorId authorId = new AuthorId("Carlos", 43, publisher);
         Author author = new Author();
         author.setGenre("Masculino");
         author.setAuthorId(authorId);
@@ -50,7 +59,7 @@ public class BookstoreService {
         persistAuthor(author);
         //notifyAuthor(author);
         helperService.fetchName();
-        helperService.deleteById(new AuthorId("teste3", 19));
+        //helperService.deleteById(new AuthorId("teste3", 19, publisher));
     }
 
     public void persistAuthor(Author author) {
@@ -58,7 +67,7 @@ public class BookstoreService {
     }
 
     public void update() {
-        helperService.updateAuthor();
+        helperService.updateAuthor(this.publisher);
     }
 
     private void notifyAuthor(Author author) {

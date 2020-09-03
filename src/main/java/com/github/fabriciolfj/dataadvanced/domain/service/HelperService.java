@@ -2,6 +2,7 @@ package com.github.fabriciolfj.dataadvanced.domain.service;
 
 import com.github.fabriciolfj.dataadvanced.domain.entity.Author;
 import com.github.fabriciolfj.dataadvanced.domain.entity.AuthorId;
+import com.github.fabriciolfj.dataadvanced.domain.entity.Publisher;
 import com.github.fabriciolfj.dataadvanced.domain.repository.AuthorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,8 +27,9 @@ public class HelperService {
     }
 
     @Transactional
-    public void updateAuthor() {
-        var author = repository.findById(new AuthorId("Carlos", 43)).orElseThrow();
+    public void updateAuthor(Publisher publisher) {
+        publisher.setCompany("Teste");
+        var author = repository.findById(new AuthorId("Carlos", 43, publisher)).orElseThrow();
         author.setGenre("Teste");
     }
 

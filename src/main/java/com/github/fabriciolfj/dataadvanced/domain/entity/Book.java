@@ -50,7 +50,8 @@ public class Book implements Serializable {
     @ToString.Include
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumns
-   ({@JoinColumn(name = "name", referencedColumnName = "name"), @JoinColumn(name = "age", referencedColumnName = "age")})
+   ({@JoinColumn(name = "name", referencedColumnName = "name"), @JoinColumn(name = "age", referencedColumnName = "age"),
+           @JoinColumn(name = "publisher", referencedColumnName = "publisher")})
     @JsonIgnore
     private Author author;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)

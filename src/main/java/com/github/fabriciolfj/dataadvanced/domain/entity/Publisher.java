@@ -28,7 +28,4 @@ public class Publisher {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String company;
-    @OneToMany(mappedBy = "publisher")
-    @JsonIgnore
-    private List<Book> books;
 }

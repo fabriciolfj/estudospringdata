@@ -8,6 +8,8 @@ import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
 @Embeddable
@@ -24,4 +26,7 @@ public class AuthorId implements Serializable {
     private String name;
     @Column(name = "age")
     private int age;
+    @ManyToOne
+    @JoinColumn(name = "publisher")
+    private Publisher publisher;
 }
