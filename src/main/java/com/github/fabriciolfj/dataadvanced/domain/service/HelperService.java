@@ -14,7 +14,12 @@ public class HelperService {
 
     private final AuthorRepository repository;
 
-    //@Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void deleteById(AuthorId authorId) {
+        repository.deleteById(authorId);
+        System.out.println(repository.count());
+    }
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void persistAuthor(Author author) {
         repository.save(author);
         repository.count();
@@ -24,6 +29,11 @@ public class HelperService {
     public void updateAuthor() {
         var author = repository.findById(new AuthorId("Carlos", 43)).orElseThrow();
         author.setGenre("Teste");
+    }
+
+    @Transactional
+    public void delete(AuthorId authorId) {
+        repository.deleteById(authorId);
     }
 
     @Transactional

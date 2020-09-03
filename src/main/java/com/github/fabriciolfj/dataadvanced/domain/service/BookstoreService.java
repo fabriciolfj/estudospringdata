@@ -21,7 +21,7 @@ public class BookstoreService {
     private final HelperService helperService;
 
     public void mainAuthor(){
-        AuthorId authorId = new AuthorId("teste", 19);
+        AuthorId authorId = new AuthorId("teste5", 25);
         Author author = new Author();
         author.setGenre("Masculino");
         author.setAuthorId(authorId);
@@ -50,6 +50,7 @@ public class BookstoreService {
         persistAuthor(author);
         //notifyAuthor(author);
         helperService.fetchName();
+        helperService.deleteById(new AuthorId("teste3", 19));
     }
 
     public void persistAuthor(Author author) {
