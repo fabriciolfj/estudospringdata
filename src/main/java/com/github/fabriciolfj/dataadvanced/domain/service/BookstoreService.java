@@ -27,21 +27,21 @@ public class BookstoreService {
 
         Book book = new Book();
         book.setAuthor(author);
-        book.setPrice(new BigDecimal(10.00));
+        book.setPrice(100.00D);
         book.setIsbn("9923232j");
         book.setTitle("Teste1");
 
         Book book2 = new Book();
-        book.setAuthor(author);
-        book.setPrice(new BigDecimal(15.00));
-        book.setIsbn("9923232j");
-        book.setTitle("Teste2");
+        book2.setAuthor(author);
+        book2.setPrice(15.00D);
+        book2.setIsbn("9923232j");
+        book2.setTitle("Teste2");
 
         Book book3 = new Book();
-        book.setAuthor(author);
-        book.setPrice(new BigDecimal(17.00));
-        book.setIsbn("9923232j");
-        book.setTitle("Teste3");
+        book3.setAuthor(author);
+        book3.setPrice(17.00D);
+        book3.setIsbn("9923232j");
+        book3.setTitle("Teste3");
 
         author.addBook(book);
         author.addBook(book2);
@@ -52,6 +52,7 @@ public class BookstoreService {
 
     public void persistAuthor(Author author) {
         helperService.persistAuthor(author);
+        helperService.getBooks();
     }
 
     public void update(long id) {
