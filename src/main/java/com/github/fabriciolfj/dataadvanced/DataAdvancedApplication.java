@@ -37,6 +37,7 @@ public class DataAdvancedApplication {
             //authorService.batchAuthors();
             //authorService.imprimirLivros();
             bookstoreService.mainAuthor();
+            bookstoreService.update();
         };
     }
 

@@ -1,6 +1,7 @@
 package com.github.fabriciolfj.dataadvanced.domain.service;
 
 import com.github.fabriciolfj.dataadvanced.domain.entity.Author;
+import com.github.fabriciolfj.dataadvanced.domain.entity.AuthorId;
 import com.github.fabriciolfj.dataadvanced.domain.entity.Book;
 import com.github.fabriciolfj.dataadvanced.domain.repository.AuthorRepository;
 import com.github.fabriciolfj.dataadvanced.domain.repository.BookRepository;
@@ -20,10 +21,10 @@ public class BookstoreService {
     private final HelperService helperService;
 
     public void mainAuthor(){
+        AuthorId authorId = new AuthorId("teste", 19);
         Author author = new Author();
-        author.setAge(43);
         author.setGenre("Masculino");
-        author.setName("Carlos");
+        author.setAuthorId(authorId);
 
         Book book = new Book();
         book.setAuthor(author);
@@ -47,15 +48,16 @@ public class BookstoreService {
         author.addBook(book2);
         author.addBook(book3);
         persistAuthor(author);
-        notifyAuthor(author);
+        //notifyAuthor(author);
+        helperService.fetchName();
     }
 
     public void persistAuthor(Author author) {
         helperService.persistAuthor(author);
     }
 
-    public void update(long id) {
-        helperService.updateAuthor(id);
+    public void update() {
+        helperService.updateAuthor();
     }
 
     private void notifyAuthor(Author author) {

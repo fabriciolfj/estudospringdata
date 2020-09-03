@@ -13,6 +13,7 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -39,11 +40,11 @@ import java.util.UUID;
 @AllArgsConstructor
 @NamedQuery(
         name = "Author.fetchName",
-        query = "SELECT a.name From Author a"
+        query = "SELECT a.id.name From Author a where a.id.name = ?1"
 )
 @NamedQuery(
         name = "Author.fetchNameAndAge2",
-        query = "SELECT a.age as age, a.name As name From Author a"
+        query = "SELECT a.id.age as age, a.id.name As name From Author a"
 )
 @NamedNativeQuery(
         name = "Author.fetchName2",
@@ -51,26 +52,18 @@ import java.util.UUID;
 )
 @NamedNativeQuery(
         name = "Author.fetchNameAndAge",
-        query = "SELECT a.age, a.name From author a"
+        query = "SELECT a.id.age, a.id.name From author a"
 )
 public class Author implements Serializable {
 
     private static final long serialVersionUID = 4225172803841161426L;
 
-    @Id
-    @ToString.Include
-    @EqualsAndHashCode.Include
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @ToString.Include
-    private String name;
+    @EmbeddedId
+    private AuthorId authorId;
     @ToString.Include
     @Basic(fetch = FetchType.LAZY)
     private String genre;
     @Basic(fetch = FetchType.LAZY)
-    @ToString.Include
-    private int age;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "author", orphanRemoval = true)
     @BatchSize(size = 3)
     private List<Book> books = new ArrayList<>();

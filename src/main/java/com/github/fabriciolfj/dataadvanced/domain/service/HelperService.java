@@ -1,6 +1,7 @@
 package com.github.fabriciolfj.dataadvanced.domain.service;
 
 import com.github.fabriciolfj.dataadvanced.domain.entity.Author;
+import com.github.fabriciolfj.dataadvanced.domain.entity.AuthorId;
 import com.github.fabriciolfj.dataadvanced.domain.repository.AuthorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,19 +18,22 @@ public class HelperService {
     public void persistAuthor(Author author) {
         repository.save(author);
         repository.count();
-
-        throw new RuntimeException();
     }
 
     @Transactional
-    public void updateAuthor(long id) {
-        var author = repository.findById(id).orElseThrow();
+    public void updateAuthor() {
+        var author = repository.findById(new AuthorId("Carlos", 43)).orElseThrow();
         author.setGenre("Teste");
     }
 
     @Transactional
     public void deleteGenre() {
-        var author = repository.fetchByName("Name_1");
-        repository.deleteByNeGenre(author.getGenre());
+       /*var author = repository.fetchByName("Name_1");
+        repository.deleteByNeGenre(author.getGenre());*/
+    }
+
+    @Transactional(readOnly = true)
+    public void fetchName() {
+        repository.fetchName("Fabricio").stream().forEach(System.out::println);
     }
 }

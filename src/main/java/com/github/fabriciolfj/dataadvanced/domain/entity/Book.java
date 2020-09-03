@@ -17,6 +17,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -48,7 +49,8 @@ public class Book implements Serializable {
     private String isbn;
     @ToString.Include
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "author_id")
+    @JoinColumns
+   ({@JoinColumn(name = "name", referencedColumnName = "name"), @JoinColumn(name = "age", referencedColumnName = "age")})
     @JsonIgnore
     private Author author;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)

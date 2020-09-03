@@ -24,10 +24,8 @@ public class AuthorService {
         List<Author> authors = new ArrayList<>();
         for(int i = 0; i < 5; i ++) {
             Author author = new Author();
-            author.setAge(i + 1);
-            author.setName("Name_" + i);
             author.setGenre("Genre_" + i);
-            author.setAge(18 + i);
+
 
             /*for (int j = 0; j < 5; j++) {
                 Book book = new Book();
