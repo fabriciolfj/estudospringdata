@@ -18,8 +18,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQuery;
+import javax.persistence.NamedSubgraph;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -52,6 +55,18 @@ import java.util.UUID;
 @NamedNativeQuery(
         name = "Author.fetchNameAndAge",
         query = "SELECT a.age, a.name From author a"
+)
+@NamedEntityGraph(
+        name = "author-books-publisher-graph",
+        attributeNodes = {
+                @NamedAttributeNode(value = "books", subgraph = "publisher-subgraph")
+        },
+        subgraphs = {
+                @NamedSubgraph(name = "publisher-subgraph",
+                        attributeNodes = {
+                                @NamedAttributeNode("publisher")
+                        })
+        }
 )
 public class Author implements Serializable {
 
